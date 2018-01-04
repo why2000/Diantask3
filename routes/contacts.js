@@ -48,11 +48,9 @@ router.get('/:contact_id',async (req, res, next) => {
 router.put('/:contact_id', async (req, res, next) => {
     let params = {
         "contact_id": req.params.contact_id,
-        "document": {
-            "name": req.body.name,
-            "phone": req.body.phone,
-            "email":req.body.email
-        }
+        "name": req.body.name,
+        "phone": req.body.phone,
+        "email":req.body.email
     };
     try {
         let result = await ContactsController.updateInf(params);

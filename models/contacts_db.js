@@ -59,8 +59,11 @@ exports.getOneInf = async params => {
 
 exports.updateInf = async params => {
     var collection = db.collection('col1');
-    var where = {"_id": MongoDB.ObjectId(params.contact_id)};
-    var newinf = {$set: params.document};
+    var data = params;
+    var where = {"_id": MongoDB.ObjectId(data.contact_id)};
+    data._id = data.contact_id;
+    delete data.contact_id;
+    var newinf = {$set: params};
     collection.update(where,newinf,function(err, result){
         if(err)
         {
