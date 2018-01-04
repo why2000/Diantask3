@@ -20,7 +20,7 @@ MongoClient.connect(ConfigSet.DATABASE_URL, (err, client) => {
                 ContactsLogger.error(`database error => ${err.stack}`);
                 throw err;
             } else {
-                //console.log("创建集合");
+                //console.log("Successfully creat col");
                 ;
             }
           });

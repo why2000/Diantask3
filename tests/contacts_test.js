@@ -24,7 +24,6 @@ let addContactsJsonSchema = {
         }
     }
 };
-
 describe('Contacts API', () => {
     it('Add Contact', done => {
         let testBody = {
@@ -46,7 +45,7 @@ describe('Contacts API', () => {
                 }
             });
     });
-    it('Update Contact', done => {
+    /*it('Update Contact', done => {
         let testBody = {
             phone: '18827054817',
             name: 'dian',
@@ -85,6 +84,6 @@ describe('Contacts API', () => {
                     done();
                 }
             });
-    });
+    });*/
 
 });
