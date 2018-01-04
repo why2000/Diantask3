@@ -54,14 +54,14 @@ exports.updateInf = async params => {
     var where = {"_id": MongoDB.ObjectId(data.contact_id)};
     data._id = MongoDB.ObjectID(data.contact_id);
     delete data.contact_id;
-    var newinf = {$set: params};
+    var newinf = {$set: data};
     collection.update(where,newinf,function(err, result){
         if(err)
         {
             throw err;
         }
     });
-    return {"message": "Update Successfully"};
+    return data;
 }
 
 exports.deleteInf = async params => {
