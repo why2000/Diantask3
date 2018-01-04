@@ -28,8 +28,6 @@ MongoClient.connect(ConfigSet.DATABASE_URL, (err, client) => {
 })
 
 exports.addContact = async function(params) {
-    // TODO
-    //与数据库进行数据传输
     var collection = db.collection('col1');
     var data = params;
     console.log(data);
@@ -44,7 +42,7 @@ exports.addContact = async function(params) {
     return data;
 }
 
-exports.getAllInf = function() {
+exports.getAllInf = async function() {
     var collection = db.collection('col1');
     var data = collection.find().toArray();
     return data;
