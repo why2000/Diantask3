@@ -58,6 +58,7 @@ exports.updateInf = async params => {
     collection.update(where,newinf,function(err, result){
         if(err)
         {
+            ContactsLogger.error(`database error => ${err.stack}`);
             throw err;
         }
     });
@@ -70,6 +71,7 @@ exports.deleteInf = async params => {
     collection.remove(where,function(err, result) {
         if(err)
         {
+            ContactsLogger.error(`database error => ${err.stack}`);
             throw err;
         }
     });
