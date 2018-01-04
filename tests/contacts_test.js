@@ -46,5 +46,45 @@ describe('Contacts API', () => {
                 }
             });
     });
+    it('Update Contact', done => {
+        let testBody = {
+            phone: '18827054817',
+            name: 'dian',
+            email: 'email@email.com'
+        };
+        chai.request(baseUrl)
+            .put('/contacts')
+            .send(testBody)
+            .end((err, res) => {
+                if (err) {
+                    debug(`error => ${err.stack}`);
+                    done(err);
+                } else {
+                    expect(res.body).to.be.jsonSchema(addContactsJsonSchema);
+                    debug(`response => ${JSON.stringify(res.body, null, 2)}`);
+                    done();
+                }
+            });
+    });
+    it('Delete Contact', done => {
+        let testBody = {
+            phone: '18827054817',
+            name: 'dian',
+            email: 'email@email.com'
+        };
+        chai.request(baseUrl)
+            .post('/contacts')
+            .send(testBody)
+            .end((err, res) => {
+                if (err) {
+                    debug(`error => ${err.stack}`);
+                    done(err);
+                } else {
+                    expect(res.body).to.be.jsonSchema(addContactsJsonSchema);
+                    debug(`response => ${JSON.stringify(res.body, null, 2)}`);
+                    done();
+                }
+            });
+    });
 
 });
