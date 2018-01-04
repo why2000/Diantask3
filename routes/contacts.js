@@ -34,7 +34,7 @@ router.get('/', async (req, res, next) => {
 });
 
 //更新联系人
-router.put('/:contact_id', async (req, res, next) => {
+router.put('/:id', async (req, res, next) => {
     let params = {
         "contact_id": req.params.contact_id,
         "name": req.body.name,
@@ -51,7 +51,7 @@ router.put('/:contact_id', async (req, res, next) => {
     }
 });
 //删除联系人
-router.delete('/:contact_id', async (req, res, next) => {
+router.delete('/:id', async (req, res, next) => {
     let params={"contact_id": req.params.contact_id};
     try {
         let result = await ContactsController.deleteInf(params);
