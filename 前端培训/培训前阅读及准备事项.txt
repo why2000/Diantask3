@@ -1,0 +1,5 @@
+1.浏览器chrome 插件Allow-Control-Allow-Origin: * postman   很重要 不然本地的示例无法访问远程服务器 由于跨域访问的问题！！！！
+2.演示的实例全部在里面
+3.编辑器：无具体要求 自己使用顺手即可
+4.http://www.w3school.com.cn/h.asp 中HTML CSS
+5.http://www.w3school.com.cn/b.asp 中js DOM ajax json 内容
