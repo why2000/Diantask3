@@ -36,7 +36,7 @@ router.get('/', async (req, res, next) => {
 router.get('/:contact_id',async (req, res, next) => {
     let params = {"contact_id": req.params.contact_id};
     try {
-        let result = await ContactsController.getSingleInf(params);
+        let result = await ContactsController.getOneInf(params);
         ContactsLogger.info(`get single contact result => ${JSON.stringify(result, null, 2)}`);
         res.json({"result": result});
     } catch(err) {

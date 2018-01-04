@@ -40,8 +40,8 @@ exports.getAllInf = async params => {
     return data;
 }
 
-exports.getSingleInf = async params => {
-    let data = await ContactsDB.getSingleInf(params);
+exports.getOneInf = async params => {
+    let data = await ContactsDB.getOneInf(params);
     data.contact_id = data._id;
     delete data._id;
     return data;

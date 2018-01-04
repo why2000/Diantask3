@@ -20,7 +20,8 @@ MongoClient.connect(ConfigSet.DATABASE_URL, (err, client) => {
                 ContactsLogger.error(`database error => ${err.stack}`);
                 throw err;
             } else {
-                console.log("创建集合");
+                //console.log("创建集合");
+                ;
             }
           });
     }
@@ -49,7 +50,7 @@ exports.getAllInf = function() {
     return data;
 }
 
-exports.getSingleInf = async params => {
+exports.getOneInf = async params => {
     var collection = db.collection('col1');
     var where = {"_id": MongoDB.ObjectId(params.contact_id)};
     var data = collection.findOne(where);
