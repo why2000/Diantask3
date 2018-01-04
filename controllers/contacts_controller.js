@@ -19,13 +19,13 @@ async function _validateAddContactParams(params) {
     var emailPattern = /^([a-zA-Z0-9]+[-_.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[-_.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,6}$/,
         namePattern = /^.{1,20}$/,
         phonePattern = /(^(([0\+]\d{2,3}-)?(0\d{2,3})-)(\d{7,8})(-(\d{3,}))?$)|(^0{0,1}1[3|4|5|6|7|8|9][0-9]{9}$)/;
-        console.log(`email => ${params.email}`);
-        console.log(`phone => ${params.phone}`);
-        console.log(`name => ${params.name}`);
+        //console.log(`email => ${params.email}`);
+        //console.log(`phone => ${params.phone}`);
+        //console.log(`name => ${params.name}`);
     if(namePattern.test(params.name)&&phonePattern.test(params.phone)) {
-        console.log("name phone gotcha");
+        //console.log("name phone gotcha");
         if(!params.email){
-            console.log("email void");
+            //console.log("email void");
             return true;
         } else {
             if(emailPattern.test(params.email)){
@@ -53,6 +53,9 @@ exports.getOneInf = async params => {
 }
 
 exports.updateInf = async params => {
+    if (!await _validateAddContactParams(params.document)) {
+        throw ErrorUtil.createError(ErrorUtil.ErrorSet.REQUEST_PARAMETER_ERROR);
+    }
     let data = await ContactsDB.updateInf(params);
     return data;
 }
