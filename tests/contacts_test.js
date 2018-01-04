@@ -24,7 +24,42 @@ let addContactsJsonSchema = {
         }
     }
 };
+let GetContactsJsonSchema = {
+    title: 'Add Contacts Response JSON Schema',
+    type: 'object',
+    required: ['result'],
+    properties: {
+        result: {
+            type: 'array',
+            properties:{
+                type: 'object',
+                required: ['contact_id', 'phone', 'name'],
+                properties: {
+                    contact_id: {type: 'string'},
+                    phone: {type: 'string'},
+                    name: {type: 'string'},
+                }
+            }
+        }
+    }
+};
+let DeleteContactsJsonSchema = {
+    title: 'Delete Contacts Response JSON Schema',
+    type: 'object',
+    required: ['result'],
+    properties: {
+        result: {
+            type: 'object',
+            required: ['message'],
+            properties: {
+                message: "Delete Successfully"
+            }
+        }
+    }
+    
+};
 describe('Contacts API', () => {
+    var contact_id;
     it('Add Contact', done => {
         let testBody = {
             phone: '18827054817',
@@ -39,20 +74,36 @@ describe('Contacts API', () => {
                     debug(`error => ${err.stack}`);
                     done(err);
                 } else {
+                    contact_id = res.body.result.contact_id
                     expect(res.body).to.be.jsonSchema(addContactsJsonSchema);
                     debug(`response => ${JSON.stringify(res.body, null, 2)}`);
                     done();
                 }
             });
     });
-    /*it('Update Contact', done => {
-        let testBody = {
-            phone: '18827054817',
-            name: 'dian',
-            email: 'email@email.com'
-        };
+    it('Get Contact', done => {
         chai.request(baseUrl)
-            .put('/contacts')
+            .get('/contacts')
+            .end((err, res) => {
+                if (err) {
+                    debug(`error => ${err.stack}`);
+                    done(err);
+                } else {
+                    expect(res.body).to.be.jsonSchema(GetContactsJsonSchema);
+                    debug(`response => ${JSON.stringify(res.body, null, 2)}`);
+                    done();
+                }
+            });
+    });
+    it('Update Contact', done => {
+        let testBody = {
+            phone: '13827054817',
+            name: 'Dian',
+            email: 'new@gmail.com'
+        };
+        debug('/contacts/' + contact_id);
+        chai.request(baseUrl)
+            .put('/contacts/' + contact_id)
             .send(testBody)
             .end((err, res) => {
                 if (err) {
@@ -66,24 +117,18 @@ describe('Contacts API', () => {
             });
     });
     it('Delete Contact', done => {
-        let testBody = {
-            phone: '18827054817',
-            name: 'dian',
-            email: 'email@email.com'
-        };
         chai.request(baseUrl)
-            .post('/contacts')
-            .send(testBody)
+            .delete('/contacts/' + contact_id)
             .end((err, res) => {
                 if (err) {
                     debug(`error => ${err.stack}`);
                     done(err);
                 } else {
-                    expect(res.body).to.be.jsonSchema(addContactsJsonSchema);
+                    expect(res.body).to.be.jsonSchema(DeleteContactsJsonSchema);
                     debug(`response => ${JSON.stringify(res.body, null, 2)}`);
                     done();
                 }
             });
-    });*/
+    });
 
 });

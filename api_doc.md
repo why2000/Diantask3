@@ -163,7 +163,7 @@
 |:---:|:---:|
 |602|删除指定项无效|
 
-## Get Contact
+## Get Contacts
 
 ### HTTP Method
 
@@ -211,8 +211,3 @@ null
 |name|string|人名，1-10个字符|abc|是|
 |email|string|邮件地址|test@gmail.com|否|
 |contact_id|string|联系人ID|5a2fa038349a0965f39c6371|是|
-
-### 错误码
-|错误码|说明|
-|:---:|:---:|
-|602|删除指定项无效|
