@@ -205,16 +205,9 @@ function updateInf(event) {
     } else if (!phonePattern.test(phone.value)) {
         alert('请输入有效的手机号码');
         phone.focus();
+    } else if (form.email.value&&(!emailPattern.test(form.email.value))) {
+        alert('请输入正确的邮箱')
     } else {
-        if (!emailPattern.test(form.email.value)) {
-            if (form.email.value) {
-                alert('请输入正确的邮箱');
-                form.email.focus();
-                break;
-            }
-            //alert('请输入邮箱');
-            //form.email.focus();
-        }
         var info = {
         	name: 'error',
         	email: 'test@qq.com',
@@ -295,16 +288,9 @@ addEvent(document.forms.addInf, "submit", function(event) {
     } else if (!phonePattern.test(form.phone.value)) {
         alert('请输入正确的手机号码');
         form.phone.focus();
+    } else if (form.email.value&&(!emailPattern.test(form.email.value))) {
+            alert('请输入正确的邮箱')
     } else {
-        if (!emailPattern.test(form.email.value)) {
-            if (form.email.value) {
-                alert('请输入正确的邮箱');
-                form.email.focus();
-                break;
-            }
-            //alert('请输入邮箱');
-            //form.email.focus();
-        }  
         var info = {
         	name: 'error',
         	email: 'test@qq.com',
