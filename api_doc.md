@@ -76,7 +76,7 @@
 /contacts/:contact_id
 ```
 
-### Post Body参数
+### Put Body参数
 
 示例
 
@@ -104,7 +104,7 @@
     "phone": "18827054813",
     "name": "dian",
     "email": "email@email.com",
-    "contact_id": "5a2fa038874a0e1afc9a65f1"
+    "_id": "5a2fa038874a0e1afc9a65f1"
   }
 }
 ```

@@ -25,10 +25,10 @@ router.post('/', async (req, res, next) => {
 router.get('/', async (req, res, next) => {
     try {
         let result = await ContactsController.getAllInf();
-        ContactsLogger.info(`get all contacts result => ${JSON.stringify(result,null,2)}`);
+        ContactsLogger.info(`get contacts result => ${JSON.stringify(result,null,2)}`);
         res.json({"result": result});
     } catch(err) {
-        ContactsLogger.error(`get all contacts error => ${err.stack}`);
+        ContactsLogger.error(`get contacts error => ${err.stack}`);
         next(err);
     }
 });
