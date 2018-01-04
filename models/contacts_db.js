@@ -30,7 +30,7 @@ MongoClient.connect(ConfigSet.DATABASE_URL, (err, client) => {
 exports.addContact = async function(params) {
     var collection = db.collection('col1');
     var data = params;
-    console.log(data);
+    //console.log(data);
     collection.insert(data, function(err, result){
         if(err){
             ContactsLogger.error(`database error => ${err.stack}`);
@@ -62,6 +62,8 @@ exports.updateInf = async params => {
             throw err;
         }
     });
+    data.contact_id = MongoDB.ObjectID(data._id);
+    delete data._id;
     return data;
 }
 
@@ -72,7 +74,7 @@ exports.deleteInf = async params => {
         if(err)
         {
             ContactsLogger.error(`database error => ${err.stack}`);
-            throw err;
+            throw ErrorUtil.createError(ErrorUtil.ErrorSet.DELETE_FAILED);
         }
     });
     return {"message": "Delete Successfully"};
