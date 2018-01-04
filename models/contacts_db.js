@@ -54,7 +54,7 @@ exports.updateInf = async params => {
     var collection = db.collection('col1');
     var data = params;
     var where = {"_id": MongoDB.ObjectId(data.contact_id)};
-    data._id = data.contact_id;
+    data._id = MongoDB.ObjectID(data.contact_id);
     delete data.contact_id;
     var newinf = {$set: params};
     collection.update(where,newinf,function(err, result){
