@@ -32,19 +32,8 @@ router.get('/', async (req, res, next) => {
         next(err);
     }
 });
-//发送单一联系人
-router.get('/:contact_id',async (req, res, next) => {
-    let params = {"contact_id": req.params.contact_id};
-    try {
-        let result = await ContactsController.getOneInf(params);
-        ContactsLogger.info(`get contact result => ${JSON.stringify(result, null, 2)}`);
-        res.json({"result": result});
-    } catch(err) {
-        ContactsLogger.error(`get contact error => ${err.stack}`);
-        next(err);
-    }
-});
-//更新单一联系人
+
+//更新联系人
 router.put('/:contact_id', async (req, res, next) => {
     let params = {
         "contact_id": req.params.contact_id,
@@ -61,7 +50,7 @@ router.put('/:contact_id', async (req, res, next) => {
         next(err);
     }
 });
-//删除单一联系人
+//删除联系人
 router.delete('/:contact_id', async (req, res, next) => {
     let params={"contact_id": req.params.contact_id};
     try {

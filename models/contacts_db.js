@@ -50,13 +50,6 @@ exports.getAllInf = function() {
     return data;
 }
 
-exports.getOneInf = async params => {
-    var collection = db.collection('col1');
-    var where = {"_id": MongoDB.ObjectId(params.contact_id)};
-    var data = collection.findOne(where);
-    return data;
-}
-
 exports.updateInf = async params => {
     var collection = db.collection('col1');
     var data = params;

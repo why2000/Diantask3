@@ -66,13 +66,6 @@ exports.getAllInf = async params => {
     return data;
 }
 
-exports.getOneInf = async params => {
-    let data = await ContactsDB.getOneInf(params);
-    data.contact_id = data._id;
-    delete data._id;
-    return data;
-}
-
 exports.updateInf = async params => {
     if (!await _validateUpdateContactParams(params)) {
         throw ErrorUtil.createError(ErrorUtil.ErrorSet.REQUEST_PARAMETER_ERROR);

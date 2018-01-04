@@ -216,7 +216,6 @@ function updateInf(event) {
         info.name = name.value;
         info.email = email.value;
         info.phone = phone.value;
-        console.log(info);
         getData("PUT", "http://120.79.70.187:3000/contacts/" + parent.getAttribute('id'), JSON.stringify(info), function() {
             if (xmlhttp.readyState == 4) {
                 if (xmlhttp.status == 200) {
@@ -300,7 +299,6 @@ addEvent(document.forms.addInf, "submit", function(event) {
         info.email = form.email.value;
         info.phone = form.phone.value;
         console.log(info);
-        //这里是服务器IP
         getData("POST", "http://120.79.70.187:3000/contacts", JSON.stringify(info), function() {
             if (xmlhttp.readyState == 4) {
                 if (xmlhttp.status == 200) {
