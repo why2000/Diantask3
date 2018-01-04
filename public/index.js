@@ -205,7 +205,7 @@ function updateInf(event) {
     } else if (!phonePattern.test(phone.value)) {
         alert('请输入有效的手机号码');
         phone.focus();
-    } else if (form.email.value&&(!emailPattern.test(form.email.value))) {
+    } else if (email.value&&(!emailPattern.test(email.value))) {
         alert('请输入正确的邮箱')
     } else {
         var info = {
